@@ -1,0 +1,9 @@
+{
+	"name": "ADFupwork",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b7ba238f-615c-4d35-be27-0e5fe9de38e5",
+		"tenantId": "6fa6a027-84a9-4739-ac9a-feab7c42f7de"
+	}
+}
