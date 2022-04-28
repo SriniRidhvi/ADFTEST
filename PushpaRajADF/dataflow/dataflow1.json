@@ -56,7 +56,7 @@
 				"          properties as (AuthorName as string, AuthorImage as string, ImageType as string, ImageMedia as string, ImageResolution as string, FileName as string),",
 				"          renditions as (downloadOriginal as string)",
 				"     ),",
-				"     partitionFileNames:['Merge.json'],",
+				"     truncate: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
