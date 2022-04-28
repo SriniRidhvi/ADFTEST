@@ -22,7 +22,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     documentForm: 'singleDocument',",
+				"     documentForm: 'arrayOfDocuments',",
 				"     wildcardPaths:['test']) ~> source1"
 			]
 		}
