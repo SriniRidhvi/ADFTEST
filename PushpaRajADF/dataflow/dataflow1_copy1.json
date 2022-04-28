@@ -1,0 +1,72 @@
+{
+	"name": "dataflow1_copy1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Json2",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Json5",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          created_by as (href as string, title as string),",
+				"          created_on as string,",
+				"          id as integer,",
+				"          modified_by as (href as string, title as string),",
+				"          properties as (AuthorImage as string, AuthorName as string, FileName as string, ImageMedia as string, ImageResolution as string, ImageType as string),",
+				"          renditions as (downloadOriginal as (href as string)[], metadata as (href as string)[])",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine',",
+				"     wildcardPaths:['content/asset/print/69892111/*.json'],",
+				"     partitionBy('hash', 1)) ~> source1",
+				"source1 derive(Json = @(Id=id,",
+				"          File=@(FileName=properties.FileName),",
+				"          downloadOriginalhref=renditions.downloadOriginal.href,",
+				"          image=@(ImageType=properties.ImageType,",
+				"          ImageMedia=properties.ImageMedia,",
+				"          ImageResolution=properties.ImageResolution),",
+				"          Author=@(AuthorName=properties.AuthorName,",
+				"          AuthorImage=properties.AuthorImage)),",
+				"     partitionBy('hash', 1)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id as integer,",
+				"          properties as (AuthorName as string, AuthorImage as string, ImageType as string, ImageMedia as string, ImageResolution as string, FileName as string),",
+				"          renditions as (downloadOriginal as string)",
+				"     ),",
+				"     partitionFileNames:['Merge.json'],",
+				"     truncate: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Id = Json",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}
