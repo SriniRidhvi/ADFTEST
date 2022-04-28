@@ -1,0 +1,58 @@
+{
+	"name": "Json4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Merged.json",
+				"folderPath": "Merged",
+				"container": "devpocconyt"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"properties": {
+					"type": "object",
+					"properties": {
+						"AuthorName": {
+							"type": "string"
+						},
+						"AuthorImage": {
+							"type": "string"
+						},
+						"FileName": {
+							"type": "string"
+						},
+						"ImageType": {
+							"type": "string"
+						},
+						"ImageMedia": {
+							"type": "string"
+						},
+						"ImageResolution": {
+							"type": "string"
+						}
+					}
+				},
+				"renditions": {
+					"type": "object",
+					"properties": {
+						"downloadOriginal": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	}
+}

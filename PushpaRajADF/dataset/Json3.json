@@ -1,0 +1,46 @@
+{
+	"name": "Json3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "test",
+				"container": "devpocconyt"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"properties": {
+					"type": "object",
+					"properties": {
+						"AuthorName": {
+							"type": "string"
+						},
+						"AuthorImage": {
+							"type": "string"
+						},
+						"ImageType": {
+							"type": "string"
+						},
+						"ImageMedia": {
+							"type": "string"
+						},
+						"ImageResolution": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	}
+}
