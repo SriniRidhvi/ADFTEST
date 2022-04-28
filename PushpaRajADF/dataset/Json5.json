@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "merged.json",
 				"folderPath": "DataFlowMerged",
 				"container": "devpocconyt"
 			}
