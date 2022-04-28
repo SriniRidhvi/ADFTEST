@@ -59,7 +59,11 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
-				"          Json",
+				"          Json = derivedColumn1@Id,",
+				"          file = file,",
+				"          downloadOriginalhref,",
+				"          image = image,",
+				"          author = author",
 				"     )) ~> sink1"
 			]
 		}
