@@ -36,11 +36,12 @@
 				"          renditions as (downloadOriginal as (href as string)[], metadata as (href as string)[])",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false,",
 				"     documentForm: 'documentPerLine',",
-				"     wildcardPaths:['content/asset/print/69892111/*.json']) ~> source1",
+				"     wildcardPaths:['content/asset/print/69892111/*.json'],",
+				"     partitionBy('hash', 1)) ~> source1",
 				"source1 derive(Id = id,",
 				"          file = @(FileName=properties.FileName),",
 				"          downloadOriginalhref = renditions.downloadOriginal.href,",
@@ -48,7 +49,8 @@
 				"          ImageMedia=properties.ImageMedia,",
 				"          ImageResolution=properties.ImageResolution),",
 				"          author = @(AuthorName=properties.AuthorName,",
-				"          AuthorImage=properties.AuthorImage)) ~> derivedColumn1",
+				"          AuthorImage=properties.AuthorImage),",
+				"     partitionBy('hash', 1)) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -56,6 +58,7 @@
 				"          properties as (AuthorName as string, AuthorImage as string, ImageType as string, ImageMedia as string, ImageResolution as string, FileName as string),",
 				"          renditions as (downloadOriginal as string)",
 				"     ),",
+				"     partitionFileNames:['Merge.json'],",
 				"     truncate: true,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
@@ -65,7 +68,8 @@
 				"          downloadOriginalhref,",
 				"          image = image,",
 				"          author = author",
-				"     )) ~> sink1"
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}
