@@ -38,7 +38,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     documentForm: 'arrayOfDocuments',",
+				"     documentForm: 'singleDocument',",
 				"     wildcardPaths:['Merged'],",
 				"     partitionBy('hash', 1)) ~> source1",
 				"source1 derive(Json = @(Id=id,",
