@@ -39,13 +39,19 @@
 				"inputs": [
 					{
 						"referenceName": "ds_get_json_rest_api_src",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"GitHub_URL": "https://pushparajan.github.io/69892111-Metadata.json"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "Json1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"File_Name": "Metadata.json"
+						}
 					}
 				]
 			}
