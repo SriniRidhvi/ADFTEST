@@ -39,7 +39,7 @@
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false,",
-				"     documentForm: 'documentPerLine',",
+				"     documentForm: 'singleDocument',",
 				"     wildcardPaths:['content/asset/print/69892111/*.json'],",
 				"     partitionBy('hash', 1)) ~> source1",
 				"source1 derive(Json = @(Id=id,",
