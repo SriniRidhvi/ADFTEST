@@ -41,7 +41,7 @@
 						"referenceName": "ds_get_json_rest_api_src",
 						"type": "DatasetReference",
 						"parameters": {
-							"GitHub_URL": "https://pushparajan.github.io/69892111-Metadata.json"
+							"GitHub_URL": "https://pushparajan.github.io/69892111-Author.json"
 						}
 					}
 				],
@@ -50,7 +50,7 @@
 						"referenceName": "Json1",
 						"type": "DatasetReference",
 						"parameters": {
-							"File_Name": "Metadata.json"
+							"File_Name": "Author.json"
 						}
 					}
 				]
