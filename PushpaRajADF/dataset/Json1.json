@@ -21,7 +21,8 @@
 				},
 				"folderPath": "test",
 				"container": "devpocconyt"
-			}
+			},
+			"encodingName": "UTF-8 without BOM"
 		},
 		"schema": {
 			"type": "object",
